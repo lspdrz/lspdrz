@@ -1,6 +1,6 @@
 import Head from "next/head";
 import "../styles/tailwind.css"; // import Tailwind globally
-import favicon from "../public/favicon.ico";
+
 function MyApp({ Component, pageProps }) {
   return (
     <div className="bg-lspdrz-gray text-lspdrz-pink min-h-screen">

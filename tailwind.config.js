@@ -6,7 +6,17 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+			typography: ({theme}) => ({
+				DEFAULT: {
+					css: {
+						'--tw-prose-body': theme('colors.lspdrz-pink'),
+            '--tw-prose-headings': theme('colors.lspdrz-pink'),
+            '--tw-prose-bold': theme('colors.lspdrz-pink'),
+					},
+				},
+			}),
+    },
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
@@ -35,7 +45,7 @@ module.exports = {
 
       '2xl': '1536px',
       // => @media (min-width: 1536px) { ... }
-    }
+    },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
 }
