@@ -1,8 +1,6 @@
 import Image from "next/image";
 import Layout from "../components/Layout";
 import luisPedrazaImage from "../public/images/luis-pedraza.jpeg";
-import { gql } from "@apollo/client";
-import client from "../apollo-client";
 
 const IndexPage = () => {
   return (
@@ -58,28 +56,5 @@ const IndexPage = () => {
     </Layout>
   );
 };
-
-// export async function getStaticProps() {
-//   const { data } = await client.query({
-//     query: gql`
-//       query Articles {
-//         articles {
-//           data {
-//             attributes {
-//               createdAt
-//               title
-//             }
-//           }
-//         }
-//       }
-//     `,
-//   });
-
-//   return {
-//     props: {
-//       articles: data.articles.data.slice(0, 4),
-//     },
-//   };
-// }
 
 export default IndexPage;
