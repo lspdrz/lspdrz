@@ -7,7 +7,7 @@ type Props = {
 };
 
 const Layout = ({ children, title = "Luis Pedraza" }: Props) => (
-  <div className="p-6 pb-12 md:p-24 md:pt-36 flex justify-center">
+  <div className="p-3 pb-12 2xl:p-24 2xl:pt-36 md:px-24 md:py-6">
     <Head>
       <title>{title}</title>
       <meta charSet="utf-8" />
