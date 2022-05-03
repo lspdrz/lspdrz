@@ -4,16 +4,10 @@ import luisPedrazaImage from "../public/images/luis-pedraza.jpeg";
 import { gql } from "@apollo/client";
 import client from "../apollo-client";
 
-const IndexPage = ({ articles }) => {
-  console.log("hi articles");
-  console.log(articles);
+const IndexPage = () => {
   return (
-    <Layout title="Luis Pedraza">
-      <div>
-        <h1 className="text-5xl">Luis</h1>
-        <h1 className="text-5xl">Pedraza</h1>
-      </div>
-      <div className="flex gap-2 mt-2 flex-wrap-reverse 1.5xl:flex-nowrap lg:flex-wrap md:flex-wrap sm:flex-wrap">
+    <Layout homePage={true}>
+      <div className="mt-2 flex gap-2 flex-wrap-reverse 1.5xl:flex-nowrap lg:flex-wrap md:flex-wrap sm:flex-wrap">
         <div className="border-2 border-lspdrz-pink 1.5xl:w-[600px]">
           <p className="p-3">
             Hey hey!
@@ -65,27 +59,27 @@ const IndexPage = ({ articles }) => {
   );
 };
 
-export async function getStaticProps() {
-  const { data } = await client.query({
-    query: gql`
-      query Articles {
-        articles {
-          data {
-            attributes {
-              createdAt
-              title
-            }
-          }
-        }
-      }
-    `,
-  });
+// export async function getStaticProps() {
+//   const { data } = await client.query({
+//     query: gql`
+//       query Articles {
+//         articles {
+//           data {
+//             attributes {
+//               createdAt
+//               title
+//             }
+//           }
+//         }
+//       }
+//     `,
+//   });
 
-  return {
-    props: {
-      articles: data.articles.data.slice(0, 4),
-    },
-  };
-}
+//   return {
+//     props: {
+//       articles: data.articles.data.slice(0, 4),
+//     },
+//   };
+// }
 
 export default IndexPage;
