@@ -38,7 +38,7 @@ const Navbar = () => {
         </div>
         <Popover className="relative sm:hidden">
           <div className="flex justify-end">
-            <Popover.Button className="p-2 text-center inline-flex items-center border-2 border-lspdrz-pink cursor-pointer">
+            <Popover.Button className="px-2 py-1 text-center inline-flex items-center border-2 border-lspdrz-pink cursor-pointer">
               {navItems[currentPage]}
               <svg
                 className="w-4 h-4 ml-2"
