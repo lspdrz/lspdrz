@@ -1,0 +1,11 @@
+fragment ArticleEntityFragment on ArticleEntity {
+  id
+  attributes {
+    createdAt
+    updatedAt
+    publishedAt
+    slug
+    title
+    content
+  }
+}

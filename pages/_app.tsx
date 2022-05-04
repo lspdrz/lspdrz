@@ -1,7 +1,8 @@
+import { AppProps } from "next/app";
 import Head from "next/head";
 import "../styles/tailwind.css"; // import Tailwind globally
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps }: AppProps) {
   return (
     <div className="bg-lspdrz-gray text-lspdrz-pink min-h-screen">
       <Head>
