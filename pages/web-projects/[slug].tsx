@@ -23,8 +23,40 @@ const WebProjectPage = ({ article, errorCode }) => {
   );
 };
 
-export async function getServerSideProps(context) {
-  const { slug } = context.query;
+export async function getStaticPaths() {
+  const { data } = await client.query({
+    query: gql`
+      query Query($filters: ArticleFiltersInput) {
+        articles(filters: $filters) {
+          data {
+            id
+            attributes {
+              slug
+            }
+          }
+        }
+      }
+    `,
+    variables: {
+      filters: {
+        type: {
+          eq: "web_project",
+        },
+      },
+    },
+  });
+  console.log("hi");
+  console.log(data);
+  const slugs = data.articles.data.map((article) => article.attributes.slug);
+  console.log(slugs);
+  const paths = slugs.map((slug) => ({ params: { slug } }));
+  return {
+    paths,
+    fallback: true,
+  };
+}
+
+export async function getStaticProps({ params: { slug } }) {
   const { data } = await client.query({
     query: gql`
       query Query($filters: ArticleFiltersInput) {
