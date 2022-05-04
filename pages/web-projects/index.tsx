@@ -6,7 +6,7 @@ import Layout from "../../components/Layout";
 const WebProjectsPage = ({ articles }) => {
   return (
     <Layout title="LP | Web Projects">
-      <div className="pt-3">
+      <div className="pt-2">
         {articles.map((article, index) => (
           <Link href={`/web-projects/${article.attributes.slug}`}>
             <div
