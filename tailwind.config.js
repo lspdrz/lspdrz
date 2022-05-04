@@ -16,12 +16,12 @@ module.exports = {
 					},
 				},
 			}),
-    },
-    colors: {
-      transparent: 'transparent',
-      current: 'currentColor',
-      'lspdrz-gray': '#2a2a2a',
-      'lspdrz-pink': '#ff6d91'
+      colors: {
+        transparent: 'transparent',
+        current: 'currentColor',
+        'lspdrz-gray': '#2a2a2a',
+        'lspdrz-pink': '#ff6d91'
+      },
     },
     fontFamily: {
       /* Kind of a strange way to set the default because Georgia is serif, 
