@@ -8,7 +8,7 @@ generates:
     preset: "near-operation-file"
     presetConfig:
       extension: .generated.tsx
-      baseTypesPath: graphql/graphql-types.generated.ts
+      baseTypesPath: ./generated/graphql-types.generated.ts
     plugins:
       - "typescript-operations"
       - "typescript-react-apollo"

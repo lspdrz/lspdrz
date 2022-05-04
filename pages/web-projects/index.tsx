@@ -1,27 +1,33 @@
 import Link from "next/link";
 import client from "../../apollo-client";
 import Layout from "../../components/Layout";
+import { ArticleEntity } from "../../graphql/generated/graphql-types.generated";
 import { ArticlesDocument } from "../../graphql/queries/getArticles.generated";
 
-const WebProjectsPage = ({ articles }) => {
+type WebProjectsPageProps = { articles: ArticleEntity[] };
+
+const WebProjectsPage = ({ articles }: WebProjectsPageProps) => {
   return (
     <Layout title="LP | Web Projects">
       <div className="pt-2">
-        {articles.map((article, index) => (
-          <Link
-            key={`article-${index}`}
-            href={`/web-projects/${article.attributes.slug}`}
-          >
-            <div className="border-2 border-lspdrz-pink cursor-pointer">
-              <p className="p-2 truncate">
-                <span className="italic text-xl">
-                  {article.attributes.title}
-                </span>{" "}
-                | {article.attributes.content}
-              </p>
-            </div>
-          </Link>
-        ))}
+        {articles.map(
+          (article, index) =>
+            article.attributes && (
+              <Link
+                key={`article-${index}`}
+                href={`/web-projects/${article.attributes.slug}`}
+              >
+                <div className="border-2 border-lspdrz-pink cursor-pointer">
+                  <p className="p-2 truncate">
+                    <span className="italic text-xl">
+                      {article.attributes.title}
+                    </span>{" "}
+                    | {article.attributes.content}
+                  </p>
+                </div>
+              </Link>
+            )
+        )}
       </div>
     </Layout>
   );

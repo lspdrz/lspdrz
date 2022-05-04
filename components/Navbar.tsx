@@ -18,7 +18,7 @@ const Navbar = () => {
     return navItem === currentPage ? "text-white" : "";
   };
 
-  const navItems = {
+  const navItems: { [id: string]: string } = {
     "/": "home",
     "web-projects": "web projects",
   };

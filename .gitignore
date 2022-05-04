@@ -8,6 +8,9 @@
 # generated files (graphql)
 *.generated*
 
+# tsconfig
+*.tsbuildinfo
+
 # env
 *.env
 
