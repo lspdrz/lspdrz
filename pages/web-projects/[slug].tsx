@@ -1,8 +1,8 @@
 import Error from "next/error";
-import { gql } from "@apollo/client";
 import ReactMarkdown from "react-markdown";
 import client from "../../apollo-client";
 import Layout from "../../components/Layout";
+import { GetArticlesBySlugDocument } from "../../graphql/queries/getArticlesBySlug.generated";
 
 const WebProjectPage = ({ article }) => {
   if (!article) {
@@ -25,18 +25,7 @@ const WebProjectPage = ({ article }) => {
 
 export async function getStaticPaths() {
   const { data } = await client.query({
-    query: gql`
-      query Query($filters: ArticleFiltersInput) {
-        articles(filters: $filters) {
-          data {
-            id
-            attributes {
-              slug
-            }
-          }
-        }
-      }
-    `,
+    query: GetArticlesBySlugDocument,
     variables: {
       filters: {
         type: {
@@ -55,19 +44,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params: { slug } }) {
   const { data } = await client.query({
-    query: gql`
-      query Query($filters: ArticleFiltersInput) {
-        articles(filters: $filters) {
-          data {
-            id
-            attributes {
-              title
-              content
-            }
-          }
-        }
-      }
-    `,
+    query: GetArticlesBySlugDocument,
     variables: {
       filters: {
         slug: {

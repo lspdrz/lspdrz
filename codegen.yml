@@ -1,0 +1,14 @@
+overwrite: true
+schema: "http://localhost:1337/graphql"
+documents: "graphql/**/*.graphql"
+generates:
+  graphql/generated/graphql-types.generated.ts:
+    - typescript
+  graphql/:
+    preset: "near-operation-file"
+    presetConfig:
+      extension: .generated.tsx
+      baseTypesPath: graphql/graphql-types.generated.ts
+    plugins:
+      - "typescript-operations"
+      - "typescript-react-apollo"

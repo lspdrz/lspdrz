@@ -5,6 +5,9 @@
 /.pnp
 .pnp.js
 
+# generated files (graphql)
+*.generated*
+
 # env
 *.env
 
