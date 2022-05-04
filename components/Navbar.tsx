@@ -58,7 +58,7 @@ const Navbar = () => {
           </div>
 
           <div className="w-32">
-            <Popover.Panel className="absolute z-10 flex flex-col w-full border-2 border-lspdrz-pink cursor-pointer bg-lspdrz-gray">
+            <Popover.Panel className="mt-2 absolute z-10 flex flex-col w-full border-2 border-lspdrz-pink cursor-pointer bg-lspdrz-gray">
               <Link href="/">
                 <a className="p-2">{navItems["/"]}</a>
               </Link>
