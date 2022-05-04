@@ -4,9 +4,9 @@ import ReactMarkdown from "react-markdown";
 import client from "../../apollo-client";
 import Layout from "../../components/Layout";
 
-const WebProjectPage = ({ article, errorCode }) => {
-  if (errorCode) {
-    return <Error statusCode={errorCode} />;
+const WebProjectPage = ({ article }) => {
+  if (!article) {
+    return <Error statusCode={404} />;
   }
   const { title, content } = article.attributes;
   return (
@@ -85,8 +85,7 @@ export async function getStaticProps({ params: { slug } }) {
 
   return {
     props: {
-      article: data.articles.data[0] || {},
-      errorCode: data.articles.data[0] ? false : 404,
+      article: data.articles.data[0] || {}, // slug is a unique field, so should always only be one article
     },
   };
 }
