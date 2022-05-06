@@ -1,0 +1,15 @@
+fragment PhotoEntityFragment on PhotoEntity {
+  id
+  attributes {
+    description
+    image {
+      data {
+        id
+        attributes {
+          url
+          name
+        }
+      }
+    }
+  }
+}

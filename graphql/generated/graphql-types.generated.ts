@@ -148,7 +148,7 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']>;
 };
 
-export type GenericMorph = Article | I18NLocale | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = Article | I18NLocale | Photo | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type I18NLocale = {
   __typename?: 'I18NLocale';
@@ -258,12 +258,14 @@ export type JsonFilterInput = {
 export type Mutation = {
   __typename?: 'Mutation';
   createArticle?: Maybe<ArticleEntityResponse>;
+  createPhoto?: Maybe<PhotoEntityResponse>;
   createUploadFile?: Maybe<UploadFileEntityResponse>;
   /** Create a new role */
   createUsersPermissionsRole?: Maybe<UsersPermissionsCreateRolePayload>;
   /** Create a new user */
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse;
   deleteArticle?: Maybe<ArticleEntityResponse>;
+  deletePhoto?: Maybe<PhotoEntityResponse>;
   deleteUploadFile?: Maybe<UploadFileEntityResponse>;
   /** Delete an existing role */
   deleteUsersPermissionsRole?: Maybe<UsersPermissionsDeleteRolePayload>;
@@ -282,6 +284,7 @@ export type Mutation = {
   resetPassword?: Maybe<UsersPermissionsLoginPayload>;
   updateArticle?: Maybe<ArticleEntityResponse>;
   updateFileInfo: UploadFileEntityResponse;
+  updatePhoto?: Maybe<PhotoEntityResponse>;
   updateUploadFile?: Maybe<UploadFileEntityResponse>;
   /** Update an existing role */
   updateUsersPermissionsRole?: Maybe<UsersPermissionsUpdateRolePayload>;
@@ -293,6 +296,11 @@ export type Mutation = {
 
 export type MutationCreateArticleArgs = {
   data: ArticleInput;
+};
+
+
+export type MutationCreatePhotoArgs = {
+  data: PhotoInput;
 };
 
 
@@ -312,6 +320,11 @@ export type MutationCreateUsersPermissionsUserArgs = {
 
 
 export type MutationDeleteArticleArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type MutationDeletePhotoArgs = {
   id: Scalars['ID'];
 };
 
@@ -383,6 +396,12 @@ export type MutationUpdateFileInfoArgs = {
 };
 
 
+export type MutationUpdatePhotoArgs = {
+  data: PhotoInput;
+  id: Scalars['ID'];
+};
+
+
 export type MutationUpdateUploadFileArgs = {
   data: UploadFileInput;
   id: Scalars['ID'];
@@ -424,6 +443,49 @@ export type PaginationArg = {
   start?: InputMaybe<Scalars['Int']>;
 };
 
+export type Photo = {
+  __typename?: 'Photo';
+  createdAt?: Maybe<Scalars['DateTime']>;
+  description?: Maybe<Scalars['String']>;
+  image?: Maybe<UploadFileEntityResponse>;
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export type PhotoEntity = {
+  __typename?: 'PhotoEntity';
+  attributes?: Maybe<Photo>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+export type PhotoEntityResponse = {
+  __typename?: 'PhotoEntityResponse';
+  data?: Maybe<PhotoEntity>;
+};
+
+export type PhotoEntityResponseCollection = {
+  __typename?: 'PhotoEntityResponseCollection';
+  data: Array<PhotoEntity>;
+  meta: ResponseCollectionMeta;
+};
+
+export type PhotoFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<PhotoFiltersInput>>>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  description?: InputMaybe<StringFilterInput>;
+  id?: InputMaybe<IdFilterInput>;
+  not?: InputMaybe<PhotoFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<PhotoFiltersInput>>>;
+  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type PhotoInput = {
+  description?: InputMaybe<Scalars['String']>;
+  image?: InputMaybe<Scalars['ID']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
 export enum PublicationState {
   Live = 'LIVE',
   Preview = 'PREVIEW'
@@ -436,6 +498,8 @@ export type Query = {
   i18NLocale?: Maybe<I18NLocaleEntityResponse>;
   i18NLocales?: Maybe<I18NLocaleEntityResponseCollection>;
   me?: Maybe<UsersPermissionsMe>;
+  photo?: Maybe<PhotoEntityResponse>;
+  photos?: Maybe<PhotoEntityResponseCollection>;
   uploadFile?: Maybe<UploadFileEntityResponse>;
   uploadFiles?: Maybe<UploadFileEntityResponseCollection>;
   usersPermissionsRole?: Maybe<UsersPermissionsRoleEntityResponse>;
@@ -466,6 +530,19 @@ export type QueryI18NLocaleArgs = {
 export type QueryI18NLocalesArgs = {
   filters?: InputMaybe<I18NLocaleFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type QueryPhotoArgs = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
+
+export type QueryPhotosArgs = {
+  filters?: InputMaybe<PhotoFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 

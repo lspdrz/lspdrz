@@ -21,8 +21,10 @@ const Navbar = () => {
   const navItems: { [id: string]: string } = {
     "/": "home",
     "web-projects": "web projects",
+    photography: "photography",
   };
 
+  // TODO: is there a way to abstract the links in the navbar into a loop? Should i do that?
   return (
     <div className="pt-1 sm:pt-0">
       <nav>
@@ -33,6 +35,11 @@ const Navbar = () => {
           <Link href="/web-projects">
             <a className={`p-2 ${getNavItemColor("web-projects")}`}>
               {navItems["web-projects"]}
+            </a>
+          </Link>
+          <Link href="/photography">
+            <a className={`p-2 ${getNavItemColor("photography")}`}>
+              {navItems["photography"]}
             </a>
           </Link>
         </div>
@@ -60,6 +67,11 @@ const Navbar = () => {
               <Link href="/web-projects">
                 <a className={`p-2 ${getNavItemColor("web-projects")}`}>
                   {navItems["web-projects"]}
+                </a>
+              </Link>
+              <Link href="/photography">
+                <a className={`p-2 ${getNavItemColor("photography")}`}>
+                  {navItems["photography"]}
                 </a>
               </Link>
             </Popover.Panel>
