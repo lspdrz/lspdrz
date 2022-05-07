@@ -1,6 +1,7 @@
 fragment PhotoEntityFragment on PhotoEntity {
   id
   attributes {
+    camera
     description
     image {
       data {

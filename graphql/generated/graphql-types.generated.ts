@@ -119,6 +119,10 @@ export enum Enum_Article_Type {
   WebProject = 'web_project'
 }
 
+export enum Enum_Photo_Camera {
+  NikonFe2 = 'nikon_fe2'
+}
+
 export type FileInfoInput = {
   alternativeText?: InputMaybe<Scalars['String']>;
   caption?: InputMaybe<Scalars['String']>;
@@ -445,9 +449,10 @@ export type PaginationArg = {
 
 export type Photo = {
   __typename?: 'Photo';
+  camera: Enum_Photo_Camera;
   createdAt?: Maybe<Scalars['DateTime']>;
   description?: Maybe<Scalars['String']>;
-  image?: Maybe<UploadFileEntityResponse>;
+  image: UploadFileEntityResponse;
   publishedAt?: Maybe<Scalars['DateTime']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
@@ -471,6 +476,7 @@ export type PhotoEntityResponseCollection = {
 
 export type PhotoFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<PhotoFiltersInput>>>;
+  camera?: InputMaybe<StringFilterInput>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
   description?: InputMaybe<StringFilterInput>;
   id?: InputMaybe<IdFilterInput>;
@@ -481,6 +487,7 @@ export type PhotoFiltersInput = {
 };
 
 export type PhotoInput = {
+  camera?: InputMaybe<Enum_Photo_Camera>;
   description?: InputMaybe<Scalars['String']>;
   image?: InputMaybe<Scalars['ID']>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
