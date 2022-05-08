@@ -24,6 +24,7 @@ const PhotographyPage = ({ photos }: PhotographyPageProps) => {
             camera &&
             lens && (
               <Photo
+                key={`photo-${index}`}
                 photoUrl={photoUrl}
                 photoDescription={
                   photoDescription || `Shot on the ${camera} with the ${lens}.`
