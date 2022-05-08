@@ -1,7 +1,6 @@
 fragment PhotoEntityFragment on PhotoEntity {
   id
   attributes {
-    camera
     description
     image {
       data {
@@ -9,6 +8,24 @@ fragment PhotoEntityFragment on PhotoEntity {
         attributes {
           url
           name
+        }
+      }
+    }
+    camera {
+      data {
+        id
+        attributes {
+          model
+          make
+        }
+      }
+    }
+    lens {
+      data {
+        id
+        attributes {
+          model
+          make
         }
       }
     }

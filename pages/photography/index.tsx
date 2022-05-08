@@ -1,9 +1,8 @@
-import Image from "next/image";
 import client from "../../apollo-client";
 import Layout from "../../components/Layout";
+import Photo from "../../components/Photo";
 import { PhotoEntity } from "../../graphql/generated/graphql-types.generated";
 import { PhotosDocument } from "../../graphql/queries/getPhotos.generated";
-import { cameraToEnglish } from "../../utils";
 
 type PhotographyPageProps = { photos: PhotoEntity[] };
 
@@ -14,27 +13,25 @@ const PhotographyPage = ({ photos }: PhotographyPageProps) => {
         {photos.map((photo, index) => {
           const photoUrl = photo.attributes?.image?.data?.attributes?.url;
           const photoDescription = photo.attributes?.description;
-          const camera = photo.attributes?.camera;
+          const cameraMake = photo.attributes?.camera?.data?.attributes?.make;
+          const cameraModel = photo.attributes?.camera?.data?.attributes?.model;
+          const camera = `${cameraMake} ${cameraModel}`;
+          const lensMake = photo.attributes?.lens?.data?.attributes?.make;
+          const lensModel = photo.attributes?.lens?.data?.attributes?.model;
+          const lens = `${lensMake} ${lensModel}`;
           return (
             photoUrl &&
-            camera && (
-              <div key={`photo-${index}`} className="pb-5">
-                <div className="border-2 border-lspdrz-pink">
-                  <div className="p-2">
-                    <Image
-                      src={photoUrl}
-                      width="75%"
-                      height="50%"
-                      layout="responsive"
-                      objectFit="contain"
-                    />
-                  </div>
-                </div>
-                <p className="italic">
-                  {photoDescription} {photoDescription && `|`}{" "}
-                  {cameraToEnglish(camera)}
-                </p>
-              </div>
+            camera &&
+            lens && (
+              <Photo
+                photoUrl={photoUrl}
+                photoDescription={
+                  photoDescription || `Shot on the ${camera} with the ${lens}.`
+                }
+                camera={camera}
+                lens={lens}
+                photoIndex={index}
+              />
             )
           );
         })}
