@@ -1,4 +1,5 @@
 import { Dialog } from "@headlessui/react";
+import { format } from "date-fns";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -7,6 +8,7 @@ type PhotoProps = {
   photoDescription?: string;
   camera: string;
   lens: string;
+  dateTaken: Date;
   photoIndex?: number;
 };
 
@@ -15,6 +17,7 @@ const Photo = ({
   photoDescription,
   camera,
   lens,
+  dateTaken,
   photoIndex,
 }: PhotoProps) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -51,7 +54,7 @@ const Photo = ({
               <div className="flex justify-between">
                 <div className="border-2 border-lspdrz-pink">
                   <p className="p-1">
-                    {camera} | {lens}
+                    {camera} | {lens} | {format(dateTaken, "MMMM Qo, yyyy")}
                   </p>
                 </div>
                 <div

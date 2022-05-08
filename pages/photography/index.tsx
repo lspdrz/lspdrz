@@ -19,6 +19,7 @@ const PhotographyPage = ({ photos }: PhotographyPageProps) => {
           const lensMake = photo.attributes?.lens?.data?.attributes?.make;
           const lensModel = photo.attributes?.lens?.data?.attributes?.model;
           const lens = `${lensMake} ${lensModel}`;
+          const dateTaken = new Date(photo.attributes?.dateTaken);
           return (
             photoUrl &&
             camera &&
@@ -31,6 +32,7 @@ const PhotographyPage = ({ photos }: PhotographyPageProps) => {
                 }
                 camera={camera}
                 lens={lens}
+                dateTaken={dateTaken}
                 photoIndex={index}
               />
             )

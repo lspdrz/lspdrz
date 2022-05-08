@@ -2,6 +2,7 @@ fragment PhotoEntityFragment on PhotoEntity {
   id
   attributes {
     description
+    dateTaken
     image {
       data {
         id
