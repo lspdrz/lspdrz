@@ -1,0 +1,33 @@
+fragment PhotoEntityFragment on PhotoEntity {
+  id
+  attributes {
+    description
+    image {
+      data {
+        id
+        attributes {
+          url
+          name
+        }
+      }
+    }
+    camera {
+      data {
+        id
+        attributes {
+          model
+          make
+        }
+      }
+    }
+    lens {
+      data {
+        id
+        attributes {
+          model
+          make
+        }
+      }
+    }
+  }
+}

@@ -10,6 +10,8 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
+  /** A date string, such as 2007-12-03, compliant with the `full-date` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
+  Date: any;
   /** A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
   DateTime: any;
   /** The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf). */
@@ -91,6 +93,73 @@ export type BooleanFilterInput = {
   startsWith?: InputMaybe<Scalars['Boolean']>;
 };
 
+export type Camera = {
+  __typename?: 'Camera';
+  createdAt?: Maybe<Scalars['DateTime']>;
+  make: Scalars['String'];
+  model: Scalars['String'];
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export type CameraEntity = {
+  __typename?: 'CameraEntity';
+  attributes?: Maybe<Camera>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+export type CameraEntityResponse = {
+  __typename?: 'CameraEntityResponse';
+  data?: Maybe<CameraEntity>;
+};
+
+export type CameraEntityResponseCollection = {
+  __typename?: 'CameraEntityResponseCollection';
+  data: Array<CameraEntity>;
+  meta: ResponseCollectionMeta;
+};
+
+export type CameraFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<CameraFiltersInput>>>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  id?: InputMaybe<IdFilterInput>;
+  make?: InputMaybe<StringFilterInput>;
+  model?: InputMaybe<StringFilterInput>;
+  not?: InputMaybe<CameraFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<CameraFiltersInput>>>;
+  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type CameraInput = {
+  make?: InputMaybe<Scalars['String']>;
+  model?: InputMaybe<Scalars['String']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type DateFilterInput = {
+  and?: InputMaybe<Array<InputMaybe<Scalars['Date']>>>;
+  between?: InputMaybe<Array<InputMaybe<Scalars['Date']>>>;
+  contains?: InputMaybe<Scalars['Date']>;
+  containsi?: InputMaybe<Scalars['Date']>;
+  endsWith?: InputMaybe<Scalars['Date']>;
+  eq?: InputMaybe<Scalars['Date']>;
+  gt?: InputMaybe<Scalars['Date']>;
+  gte?: InputMaybe<Scalars['Date']>;
+  in?: InputMaybe<Array<InputMaybe<Scalars['Date']>>>;
+  lt?: InputMaybe<Scalars['Date']>;
+  lte?: InputMaybe<Scalars['Date']>;
+  ne?: InputMaybe<Scalars['Date']>;
+  not?: InputMaybe<DateFilterInput>;
+  notContains?: InputMaybe<Scalars['Date']>;
+  notContainsi?: InputMaybe<Scalars['Date']>;
+  notIn?: InputMaybe<Array<InputMaybe<Scalars['Date']>>>;
+  notNull?: InputMaybe<Scalars['Boolean']>;
+  null?: InputMaybe<Scalars['Boolean']>;
+  or?: InputMaybe<Array<InputMaybe<Scalars['Date']>>>;
+  startsWith?: InputMaybe<Scalars['Date']>;
+};
+
 export type DateTimeFilterInput = {
   and?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
   between?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
@@ -148,7 +217,7 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']>;
 };
 
-export type GenericMorph = Article | I18NLocale | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = Article | Camera | I18NLocale | Lens | Photo | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type I18NLocale = {
   __typename?: 'I18NLocale';
@@ -255,15 +324,65 @@ export type JsonFilterInput = {
   startsWith?: InputMaybe<Scalars['JSON']>;
 };
 
+export type Lens = {
+  __typename?: 'Lens';
+  createdAt?: Maybe<Scalars['DateTime']>;
+  make: Scalars['String'];
+  model: Scalars['String'];
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export type LensEntity = {
+  __typename?: 'LensEntity';
+  attributes?: Maybe<Lens>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+export type LensEntityResponse = {
+  __typename?: 'LensEntityResponse';
+  data?: Maybe<LensEntity>;
+};
+
+export type LensEntityResponseCollection = {
+  __typename?: 'LensEntityResponseCollection';
+  data: Array<LensEntity>;
+  meta: ResponseCollectionMeta;
+};
+
+export type LensFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<LensFiltersInput>>>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  id?: InputMaybe<IdFilterInput>;
+  make?: InputMaybe<StringFilterInput>;
+  model?: InputMaybe<StringFilterInput>;
+  not?: InputMaybe<LensFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<LensFiltersInput>>>;
+  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type LensInput = {
+  make?: InputMaybe<Scalars['String']>;
+  model?: InputMaybe<Scalars['String']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   createArticle?: Maybe<ArticleEntityResponse>;
+  createCamera?: Maybe<CameraEntityResponse>;
+  createLens?: Maybe<LensEntityResponse>;
+  createPhoto?: Maybe<PhotoEntityResponse>;
   createUploadFile?: Maybe<UploadFileEntityResponse>;
   /** Create a new role */
   createUsersPermissionsRole?: Maybe<UsersPermissionsCreateRolePayload>;
   /** Create a new user */
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse;
   deleteArticle?: Maybe<ArticleEntityResponse>;
+  deleteCamera?: Maybe<CameraEntityResponse>;
+  deleteLens?: Maybe<LensEntityResponse>;
+  deletePhoto?: Maybe<PhotoEntityResponse>;
   deleteUploadFile?: Maybe<UploadFileEntityResponse>;
   /** Delete an existing role */
   deleteUsersPermissionsRole?: Maybe<UsersPermissionsDeleteRolePayload>;
@@ -281,7 +400,10 @@ export type Mutation = {
   /** Reset user password. Confirm with a code (resetToken from forgotPassword) */
   resetPassword?: Maybe<UsersPermissionsLoginPayload>;
   updateArticle?: Maybe<ArticleEntityResponse>;
+  updateCamera?: Maybe<CameraEntityResponse>;
   updateFileInfo: UploadFileEntityResponse;
+  updateLens?: Maybe<LensEntityResponse>;
+  updatePhoto?: Maybe<PhotoEntityResponse>;
   updateUploadFile?: Maybe<UploadFileEntityResponse>;
   /** Update an existing role */
   updateUsersPermissionsRole?: Maybe<UsersPermissionsUpdateRolePayload>;
@@ -293,6 +415,21 @@ export type Mutation = {
 
 export type MutationCreateArticleArgs = {
   data: ArticleInput;
+};
+
+
+export type MutationCreateCameraArgs = {
+  data: CameraInput;
+};
+
+
+export type MutationCreateLensArgs = {
+  data: LensInput;
+};
+
+
+export type MutationCreatePhotoArgs = {
+  data: PhotoInput;
 };
 
 
@@ -312,6 +449,21 @@ export type MutationCreateUsersPermissionsUserArgs = {
 
 
 export type MutationDeleteArticleArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type MutationDeleteCameraArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type MutationDeleteLensArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type MutationDeletePhotoArgs = {
   id: Scalars['ID'];
 };
 
@@ -377,9 +529,27 @@ export type MutationUpdateArticleArgs = {
 };
 
 
+export type MutationUpdateCameraArgs = {
+  data: CameraInput;
+  id: Scalars['ID'];
+};
+
+
 export type MutationUpdateFileInfoArgs = {
   id: Scalars['ID'];
   info?: InputMaybe<FileInfoInput>;
+};
+
+
+export type MutationUpdateLensArgs = {
+  data: LensInput;
+  id: Scalars['ID'];
+};
+
+
+export type MutationUpdatePhotoArgs = {
+  data: PhotoInput;
+  id: Scalars['ID'];
 };
 
 
@@ -424,6 +594,58 @@ export type PaginationArg = {
   start?: InputMaybe<Scalars['Int']>;
 };
 
+export type Photo = {
+  __typename?: 'Photo';
+  camera?: Maybe<CameraEntityResponse>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  dateTaken?: Maybe<Scalars['Date']>;
+  description?: Maybe<Scalars['String']>;
+  image: UploadFileEntityResponse;
+  lens?: Maybe<LensEntityResponse>;
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export type PhotoEntity = {
+  __typename?: 'PhotoEntity';
+  attributes?: Maybe<Photo>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+export type PhotoEntityResponse = {
+  __typename?: 'PhotoEntityResponse';
+  data?: Maybe<PhotoEntity>;
+};
+
+export type PhotoEntityResponseCollection = {
+  __typename?: 'PhotoEntityResponseCollection';
+  data: Array<PhotoEntity>;
+  meta: ResponseCollectionMeta;
+};
+
+export type PhotoFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<PhotoFiltersInput>>>;
+  camera?: InputMaybe<CameraFiltersInput>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  dateTaken?: InputMaybe<DateFilterInput>;
+  description?: InputMaybe<StringFilterInput>;
+  id?: InputMaybe<IdFilterInput>;
+  lens?: InputMaybe<LensFiltersInput>;
+  not?: InputMaybe<PhotoFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<PhotoFiltersInput>>>;
+  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type PhotoInput = {
+  camera?: InputMaybe<Scalars['ID']>;
+  dateTaken?: InputMaybe<Scalars['Date']>;
+  description?: InputMaybe<Scalars['String']>;
+  image?: InputMaybe<Scalars['ID']>;
+  lens?: InputMaybe<Scalars['ID']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
 export enum PublicationState {
   Live = 'LIVE',
   Preview = 'PREVIEW'
@@ -433,9 +655,15 @@ export type Query = {
   __typename?: 'Query';
   article?: Maybe<ArticleEntityResponse>;
   articles?: Maybe<ArticleEntityResponseCollection>;
+  camera?: Maybe<CameraEntityResponse>;
+  cameras?: Maybe<CameraEntityResponseCollection>;
   i18NLocale?: Maybe<I18NLocaleEntityResponse>;
   i18NLocales?: Maybe<I18NLocaleEntityResponseCollection>;
+  lens?: Maybe<LensEntityResponse>;
+  lenses?: Maybe<LensEntityResponseCollection>;
   me?: Maybe<UsersPermissionsMe>;
+  photo?: Maybe<PhotoEntityResponse>;
+  photos?: Maybe<PhotoEntityResponseCollection>;
   uploadFile?: Maybe<UploadFileEntityResponse>;
   uploadFiles?: Maybe<UploadFileEntityResponseCollection>;
   usersPermissionsRole?: Maybe<UsersPermissionsRoleEntityResponse>;
@@ -458,6 +686,19 @@ export type QueryArticlesArgs = {
 };
 
 
+export type QueryCameraArgs = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
+
+export type QueryCamerasArgs = {
+  filters?: InputMaybe<CameraFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
 export type QueryI18NLocaleArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
@@ -466,6 +707,32 @@ export type QueryI18NLocaleArgs = {
 export type QueryI18NLocalesArgs = {
   filters?: InputMaybe<I18NLocaleFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type QueryLensArgs = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
+
+export type QueryLensesArgs = {
+  filters?: InputMaybe<LensFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type QueryPhotoArgs = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
+
+export type QueryPhotosArgs = {
+  filters?: InputMaybe<PhotoFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
