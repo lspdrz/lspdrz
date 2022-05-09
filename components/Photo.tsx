@@ -49,7 +49,7 @@ const Photo = ({
       >
         <div className="fixed inset-0 bg-black/90" aria-hidden="true" />
         <div className="fixed inset-0 flex flex-col items-center justify-center">
-          <div className="w-full max-w-screen-2xl">
+          <div className="w-full max-w-screen-md">
             <Dialog.Panel className="px-5">
               <div className="flex justify-between">
                 <div className="border-2 border-lspdrz-pink">
