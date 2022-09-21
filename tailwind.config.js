@@ -8,11 +8,13 @@ module.exports = {
   theme: {
     extend: {
 			typography: ({theme}) => ({
+        // Default styles are here (search for "prose" for markdown styles): https://github.com/tailwindlabs/tailwindcss-typography/blob/master/src/styles.js
 				DEFAULT: {
 					css: {
 						'--tw-prose-body': theme('colors.lspdrz-pink'),
             '--tw-prose-headings': theme('colors.lspdrz-pink'),
             '--tw-prose-bold': theme('colors.lspdrz-pink'),
+            '--tw-prose-links': theme('colors.lspdrz-pink'),
 					},
 				},
 			}),
