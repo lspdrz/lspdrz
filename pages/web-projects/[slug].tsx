@@ -1,4 +1,5 @@
 import Error from "next/error";
+import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import client from "../../apollo-client";
 import Layout from "../../components/Layout";
@@ -14,7 +15,15 @@ const WebProjectPage = ({ article }: WebProjectsPageProps) => {
   }
   const { title, content } = article.attributes;
   const [cookies, setCookie] = useCookies(["lspdrzBw"]);
-  const blackAndWhiteArticle = cookies.lspdrzBw === "true";
+  const [blackAndWhiteArticle, setBlackAndWhiteArticle] = useState(false);
+  /* 
+    Using cookies with pre-rendered pages can result in differing outputs on the client and server.
+    This is a fix to persist the b&w user choice. See https://stackoverflow.com/questions/66374123/warning-text-content-did-not-match-server-im-out-client-im-in-div
+  */
+  useEffect(() => {
+    setBlackAndWhiteArticle(cookies.lspdrzBw === "true");
+  }, [cookies.lspdrzBw]);
+
   return (
     content && (
       <Layout title="LP | Web Projects">
@@ -24,9 +33,12 @@ const WebProjectPage = ({ article }: WebProjectsPageProps) => {
               {title}
             </h1>
             <h1
+              suppressHydrationWarning // Suppressing the warning because of the fix in above useEffect
               className="text-xl cursor-pointer italic p-2 pt-3 prose border-2 border-lspdrz-pink"
               onClick={() =>
-                setCookie("lspdrzBw", blackAndWhiteArticle ? "false" : "true")
+                setCookie("lspdrzBw", blackAndWhiteArticle ? "false" : "true", {
+                  sameSite: "lax",
+                })
               }
             >
               {cookies.lspdrzBw !== "true"
