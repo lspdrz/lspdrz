@@ -1,8 +1,8 @@
 import Error from "next/error";
 import { useCookies } from "react-cookie";
-import ReactMarkdown from "react-markdown";
 import client from "../../apollo-client";
 import Layout from "../../components/Layout";
+import Markdown from "../../components/Markdown";
 import { ArticleEntity } from "../../graphql/generated/graphql-types.generated";
 import { GetArticlesBySlugDocument } from "../../graphql/queries/getArticlesBySlug.generated";
 
@@ -39,7 +39,7 @@ const WebProjectPage = ({ article }: WebProjectsPageProps) => {
               blackAndWhiteArticle ? "bg-white prose-invert" : ""
             }`}
           >
-            <ReactMarkdown children={content} />
+            <Markdown markdown={{ content }} />
           </article>
         </div>
       </Layout>
