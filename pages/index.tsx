@@ -33,7 +33,7 @@ const IndexPage = () => {
             <p>
               Email:{" "}
               <button>
-                <a href="mailto:luis@lspdrz.com">luis@lspdrz.com</a>
+                <a href="mailto:luis@luispedraza.org">luis@luispedraza.org</a>
               </button>
             </p>
             <p>Phone/Whatsapp: +33 7 49 22 21 83</p>
