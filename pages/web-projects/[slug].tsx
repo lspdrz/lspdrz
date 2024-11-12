@@ -21,7 +21,7 @@ const WebProjectPage = ({ article }: WebProjectsPageProps) => {
     This is a fix to persist the b&w user choice. See https://stackoverflow.com/questions/66374123/warning-text-content-did-not-match-server-im-out-client-im-in-div
   */
   useEffect(() => {
-    setBlackAndWhiteArticle(cookies.lspdrzBw === "true");
+    setBlackAndWhiteArticle(cookies.lspdrzBw);
   }, [cookies.lspdrzBw]);
 
   return (
