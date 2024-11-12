@@ -10,6 +10,8 @@ type PhotoProps = {
   lens: string;
   dateTaken: Date;
   photoIndex?: number;
+  quality?: number;
+  priority?: boolean;
 };
 
 const Photo = ({
@@ -19,6 +21,8 @@ const Photo = ({
   lens,
   dateTaken,
   photoIndex,
+  quality,
+  priority,
 }: PhotoProps) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
@@ -29,12 +33,13 @@ const Photo = ({
           <div className="p-2 cursor-pointer">
             <Image
               src={photoUrl}
-              quality={100}
+              quality={quality || 100}
               width="75%"
               height="50%"
               layout="responsive"
               objectFit="contain"
               onClick={() => setIsOpen(true)}
+              priority={priority || false}
             />
           </div>
         </div>

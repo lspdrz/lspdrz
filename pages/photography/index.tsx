@@ -34,6 +34,8 @@ const PhotographyPage = ({ photos }: PhotographyPageProps) => {
                 lens={lens}
                 dateTaken={dateTaken}
                 photoIndex={index}
+                quality={75}
+                priority={true}
               />
             )
           );
