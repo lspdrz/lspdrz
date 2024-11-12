@@ -37,11 +37,11 @@ const Navbar = () => {
               {navItems["web-projects"]}
             </a>
           </Link>
-          <Link href="/photography">
+          {/* <Link href="/photography">
             <a className={`p-2 ${getNavItemColor("photography")}`}>
               {navItems["photography"]}
             </a>
-          </Link>
+          </Link> */}
         </div>
         <Popover className="relative sm:hidden">
           <div className="flex justify-end">
@@ -69,11 +69,11 @@ const Navbar = () => {
                   {navItems["web-projects"]}
                 </a>
               </Link>
-              <Link href="/photography">
+              {/* <Link href="/photography">
                 <a className={`p-2 ${getNavItemColor("photography")}`}>
                   {navItems["photography"]}
                 </a>
-              </Link>
+              </Link> */}
             </Popover.Panel>
           </div>
         </Popover>
