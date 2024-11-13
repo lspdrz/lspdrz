@@ -39,7 +39,7 @@ const Navbar = () => {
           className={`hidden sm:block flex justify-around border-2 ${borderColor}`}
         >
           <Link href="/">
-            <a className="p-2">{navItems["/"]}</a>
+            <a className={`p-2 ${getNavItemColor("/")}`}>{navItems["/"]}</a>
           </Link>
           <Link href="/web-projects">
             <a className={`p-2 ${getNavItemColor("web-projects")}`}>

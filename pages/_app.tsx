@@ -7,18 +7,15 @@ import { DarkModeContext } from "../context/DarkModeContext";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [cookies] = useCookies(["lspdrzDarkMode"]);
-  const [appBackgroundStyle, setAppBackgroundStyle] = useState(
-    cookies.lspdrzDarkMode || false
-  );
+  const [darkMode, setDarkMode] = useState(false);
+  const appBackgroundStyle = darkMode ? "bg-lspdrz-gray text-lspdrz-pink" : "";
 
   useEffect(() => {
-    setAppBackgroundStyle(
-      cookies.lspdrzDarkMode ? "bg-lspdrz-gray text-lspdrz-pink" : ""
-    );
+    setDarkMode(cookies.lspdrzDarkMode);
   }, [cookies.lspdrzDarkMode]);
 
   return (
-    <DarkModeContext.Provider value={cookies.lspdrzDarkMode}>
+    <DarkModeContext.Provider value={darkMode}>
       <div
         className={`min-h-screen ${appBackgroundStyle}`}
         // onKeyDown={(e) => handkleKeyDown}
