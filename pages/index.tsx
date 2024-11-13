@@ -28,7 +28,7 @@ const IndexPage = () => {
                 setCookie("lspdrzDarkMode", !cookies.lspdrzDarkMode)
               }
             >
-              here for dark mode.
+              here to toggle dark mode.
             </span>
             <br />
             <br />I grew up in Corpus Christi, Texas and went to school in
