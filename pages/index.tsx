@@ -17,6 +17,10 @@ const IndexPage = () => {
           <p className="p-3">
             Hey hey!
             <br />
+            <br /> Welcome to my personal site. You'll find all of the public
+            projects I work on here.
+            <br />
+            <br />
             Too bright? Click{" "}
             <span
               className="underline cursor-pointer"
@@ -26,9 +30,6 @@ const IndexPage = () => {
             >
               here for dark mode.
             </span>
-            <br />
-            Welcome to my personal site. You'll find all of the public projects
-            I work on here.
             <br />
             <br />I grew up in Corpus Christi, Texas and went to school in
             Austin, where I studied philosophy and computer science. I love to
