@@ -1,11 +1,12 @@
 import Error from "next/error";
-import { useEffect, useState } from "react";
+import { useContext } from "react";
 import { useCookies } from "react-cookie";
 import client from "../../apollo-client";
 import Layout from "../../components/Layout";
 import Markdown from "../../components/Markdown";
 import { ArticleEntity } from "../../graphql/generated/graphql-types.generated";
 import { GetArticlesBySlugDocument } from "../../graphql/queries/getArticlesBySlug.generated";
+import { DarkModeContext } from "../../context/DarkModeContext";
 
 type WebProjectsPageProps = { article: ArticleEntity };
 
@@ -14,41 +15,35 @@ const WebProjectPage = ({ article }: WebProjectsPageProps) => {
     return <Error statusCode={404} />;
   }
   const { title, content } = article.attributes;
-  const [cookies, setCookie] = useCookies(["lspdrzBw"]);
-  const [blackAndWhiteArticle, setBlackAndWhiteArticle] = useState(false);
-  /* 
-    Using cookies with pre-rendered pages can result in differing outputs on the client and server.
-    This is a fix to persist the b&w user choice. See https://stackoverflow.com/questions/66374123/warning-text-content-did-not-match-server-im-out-client-im-in-div
-  */
-  useEffect(() => {
-    setBlackAndWhiteArticle(cookies.lspdrzBw);
-  }, [cookies.lspdrzBw]);
+  const [cookies, setCookie] = useCookies(["lspdrzDarkMode"]);
+
+  const darkMode = useContext(DarkModeContext);
+  const borderColor = darkMode ? "border-lspdrz-pink" : "border-black";
+  const textColor = darkMode ? "text-lspdrz-pink" : "text-black";
 
   return (
     content && (
       <Layout title="LP | Web Projects">
         <div className="mt-2 flex flex-col gap-2">
           <div className="flex flex-row gap-2">
-            <h1 className="text-3xl italic p-2 prose border-2 border-lspdrz-pink flex-1">
+            <h1
+              className={`text-3xl ${textColor} italic p-2 prose border-2 ${borderColor} flex-1`}
+            >
               {title}
             </h1>
             <h1
               suppressHydrationWarning // Suppressing the warning because of the fix in above useEffect
-              className="text-xl cursor-pointer italic p-2 pt-3 prose border-2 border-lspdrz-pink"
+              className={`text-xl ${textColor} cursor-pointer italic p-2 pt-3 prose border-2 ${borderColor}`}
               onClick={() =>
-                setCookie("lspdrzBw", blackAndWhiteArticle ? "false" : "true", {
-                  sameSite: "lax",
-                })
+                setCookie("lspdrzDarkMode", !cookies.lspdrzDarkMode)
               }
             >
-              {cookies.lspdrzBw !== "true"
-                ? "I prefer to read in b&w"
-                : "Not anymore"}
+              Toggle Dark Mode
             </h1>
           </div>
           <article
-            className={`prose p-2 border-2 border-lspdrz-pink min-w-full ${
-              blackAndWhiteArticle ? "bg-white prose-invert" : ""
+            className={`prose p-2 border-2 ${borderColor} min-w-full ${
+              darkMode ? "" : "bg-white prose-invert"
             }`}
           >
             <Markdown markdown={{ content }} />

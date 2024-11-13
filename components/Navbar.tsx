@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Popover } from "@headlessui/react";
+import { useContext, useEffect } from "react";
+import { DarkModeContext } from "../context/DarkModeContext";
 
 const Navbar = () => {
   const path = useRouter().asPath;
@@ -13,22 +15,29 @@ const Navbar = () => {
           path.lastIndexOf("/") || path.length
         );
 
-  // If we're on a certain page, turn that page's item in the nav to white
-  const getNavItemColor = (navItem: string) => {
-    return navItem === currentPage ? "text-white" : "";
-  };
-
   const navItems: { [id: string]: string } = {
     "/": "home",
     "web-projects": "web projects",
     photography: "photography",
   };
 
+  const darkMode = useContext(DarkModeContext);
+  const borderColor = darkMode ? "border-lspdrz-pink" : "border-black";
+
+  // If we're on a certain page, turn that page's item in the nav to white
+  const getNavItemColor = (navItem: string) => {
+    if (navItem === currentPage)
+      return darkMode ? "text-white" : "text-lspdrz-pink";
+    return "";
+  };
+
   // TODO: is there a way to abstract the links in the navbar into a loop? Should i do that?
   return (
     <div className="pt-1 sm:pt-0">
       <nav>
-        <div className="hidden sm:block flex justify-around border-2 border-lspdrz-pink">
+        <div
+          className={`hidden sm:block flex justify-around border-2 ${borderColor}`}
+        >
           <Link href="/">
             <a className="p-2">{navItems["/"]}</a>
           </Link>
