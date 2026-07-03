@@ -22,8 +22,8 @@ const IndexPage = () => {
           <h1 className="text-5xl">Pedraza</h1>
         </div>
       </div>
-      <div className="mt-2 flex gap-2 flex-wrap-reverse 1.5xl:flex-nowrap lg:flex-wrap md:flex-wrap sm:flex-wrap">
-        <div className={`border-2 ${borderColor} 1.5xl:w-[600px]`}>
+      <div className="mt-2 flex gap-2 flex-wrap-reverse xl:flex-nowrap lg:flex-wrap md:flex-wrap sm:flex-wrap">
+        <div className={`border-2 ${borderColor} xl:w-[600px]`}>
           <p className="p-3">
             Hey hey!
             <br />
