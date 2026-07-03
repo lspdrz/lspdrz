@@ -1,8 +1,8 @@
 import Image from "next/image";
-import Layout from "../components/Layout";
+import Head from "next/head";
 import luisPedrazaImage from "../public/images/luis-pedraza.jpeg";
 import { useCookies } from "react-cookie";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { DarkModeContext } from "../context/DarkModeContext";
 
 const IndexPage = () => {
@@ -11,7 +11,18 @@ const IndexPage = () => {
   const borderColor = darkMode ? "border-lspdrz-pink" : "border-black";
 
   return (
-    <Layout homePage={true}>
+    <div className="p-3 pb-12 2xl:p-24 2xl:pt-36 md:px-24 md:py-6">
+      <Head>
+        <title>Luis Pedraza</title>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+      <div className="flex items-end justify-between">
+        <div>
+          <h1 className="text-5xl">Luis</h1>
+          <h1 className="text-5xl">Pedraza</h1>
+        </div>
+      </div>
       <div className="mt-2 flex gap-2 flex-wrap-reverse 1.5xl:flex-nowrap lg:flex-wrap md:flex-wrap sm:flex-wrap">
         <div className={`border-2 ${borderColor} 1.5xl:w-[600px]`}>
           <p className="p-3">
@@ -71,7 +82,7 @@ const IndexPage = () => {
           </div>
         </div>
       </div>
-    </Layout>
+    </div>
   );
 };
 

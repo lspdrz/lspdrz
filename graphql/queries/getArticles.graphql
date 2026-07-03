@@ -1,7 +1,0 @@
-query Articles {
-  articles {
-    data {
-      ...ArticleEntityFragment
-    }
-  }
-}
