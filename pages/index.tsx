@@ -1,12 +1,10 @@
 import Image from "next/image";
 import Head from "next/head";
 import luisPedrazaImage from "../public/images/luis-pedraza.jpeg";
-import { useCookies } from "react-cookie";
 import { useContext } from "react";
 import { DarkModeContext } from "../context/DarkModeContext";
 
 const IndexPage = () => {
-  const [cookies, setCookie] = useCookies(["lspdrzDarkMode"]);
   const darkMode = useContext(DarkModeContext);
   const borderColor = darkMode ? "border-lspdrz-pink" : "border-black";
 
@@ -30,26 +28,15 @@ const IndexPage = () => {
             <br />
             <br /> Welcome to my personal site.
             <br />
-            <br />
-            Too bright? Click{" "}
-            <span
-              className="underline cursor-pointer"
-              onClick={() =>
-                setCookie("lspdrzDarkMode", !cookies.lspdrzDarkMode)
-              }
-            >
-              here to toggle dark mode.
-            </span>
-            <br />
             <br />I grew up in Corpus Christi, Texas and went to school in
             Austin, where I studied philosophy and computer science. I love to
-            travel and experience different areas and cultures. I've spent most
+            travel and experience different regions and cultures. I've spent most
             of my time abroad in Barcelona, Istanbul, and Beirut. I'm currently
-            based in Paris.
+            based in Paris, France.
             <br />
             <br />
-            As a software engineer, I've been working at various startups over
-            the last five years as well as doing freelance/pro bono work in the
+            As a software engineer, I've worked at a wide range of startups over
+            the last ten years as well as doing freelance/pro bono work in the
             nonprofit space.
             <br />
             <br />

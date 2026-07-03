@@ -7,11 +7,13 @@ import { DarkModeContext } from "../context/DarkModeContext";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [cookies] = useCookies(["lspdrzDarkMode"]);
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
   const appBackgroundStyle = darkMode ? "bg-lspdrz-gray text-lspdrz-pink" : "";
 
   useEffect(() => {
-    setDarkMode(cookies.lspdrzDarkMode);
+    if (typeof cookies.lspdrzDarkMode === "boolean") {
+      setDarkMode(cookies.lspdrzDarkMode);
+    }
   }, [cookies.lspdrzDarkMode]);
 
   return (
