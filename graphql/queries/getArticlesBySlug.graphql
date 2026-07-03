@@ -1,7 +1,0 @@
-query GetArticlesBySlug($filters: ArticleFiltersInput) {
-  articles(filters: $filters) {
-    data {
-      ...ArticleEntityFragment
-    }
-  }
-}

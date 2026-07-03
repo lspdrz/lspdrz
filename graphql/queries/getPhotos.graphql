@@ -1,7 +1,0 @@
-query Photos {
-  photos {
-    data {
-      ...PhotoEntityFragment
-    }
-  }
-}

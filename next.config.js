@@ -1,7 +1,6 @@
 module.exports = {
-    reactStrictMode: true, 
-    images: {
-      domains: ['res.cloudinary.com'],
-      minimumCacheTTL: 10,
-    },
-  }
+  reactStrictMode: true,
+  images: {
+    unoptimized: true,
+  },
+}
