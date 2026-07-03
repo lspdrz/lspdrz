@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Head from "next/head";
+import luisPedrazaImage from "../public/images/luis-pedraza.jpeg";
 import { useCookies } from "react-cookie";
 import { useContext } from "react";
 import { DarkModeContext } from "../context/DarkModeContext";
@@ -77,10 +78,9 @@ const IndexPage = () => {
         >
           <div className="p-3 pb-1.5 self-center">
             <Image
-              src="/images/luis-pedraza.jpeg"
-              width={1024}
-              height={768}
+              src={luisPedrazaImage}
               alt="luis-pedraza-image"
+              className="max-w-full h-auto"
             />
           </div>
         </div>
