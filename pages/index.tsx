@@ -28,8 +28,7 @@ const IndexPage = () => {
           <p className="p-3">
             Hey hey!
             <br />
-            <br /> Welcome to my personal site. You'll find all of the public
-            projects I work on here.
+            <br /> Welcome to my personal site.
             <br />
             <br />
             Too bright? Click{" "}
