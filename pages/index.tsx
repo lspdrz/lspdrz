@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Head from "next/head";
-import luisPedrazaImage from "../public/images/luis-pedraza.jpeg";
 import { useCookies } from "react-cookie";
 import { useContext } from "react";
 import { DarkModeContext } from "../context/DarkModeContext";
@@ -77,7 +76,12 @@ const IndexPage = () => {
           className={`border-2 ${borderColor} grow flex flex-col justify-center`}
         >
           <div className="p-3 pb-1.5 self-center">
-            <Image src={luisPedrazaImage} alt="luis-pedraza-image" />
+            <Image
+              src="/images/luis-pedraza.jpeg"
+              width={1024}
+              height={768}
+              alt="luis-pedraza-image"
+            />
           </div>
         </div>
       </div>
